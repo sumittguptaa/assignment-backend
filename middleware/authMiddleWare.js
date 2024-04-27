@@ -1,8 +1,8 @@
 // middleware/authMiddleware.js
 const jwt = require("jsonwebtoken");
-const User = require("../models/User");
+const User = require("../models/user/user");
 
-exports.adminAuth = async (req, res, next) => {
+const adminAuth = async (req, res, next) => {
   try {
     // Extract token from headers
     const token = req.headers.authorization.split(" ")[1];
@@ -23,3 +23,5 @@ exports.adminAuth = async (req, res, next) => {
     return res.status(401).json({ error: "Unauthorized" });
   }
 };
+
+module.exports = adminAuth;
